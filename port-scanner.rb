@@ -2,11 +2,6 @@ require 'socket'
 require 'timeout'
 require 'optparse'
 
-def input_target
-  print("Input [URL:IP]: ")
-  gets.chomp
-end
-
 def port_scanner(target, ports)
   ports.each do |port|
     s = nil
