@@ -36,9 +36,10 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = <<-BANNER
 Usage: 'ruby portscanner.rb [options]'
-version 1.0
-By: IcaroSSU
-Github: github.com/icaroSSU
+
+Version 1.0
+By: Icarossu
+Github: github.com/icarossu
 
 This script is a tool for pentesting, specifically for scanning ports on a target.
 If you need help using the script, use -h.
