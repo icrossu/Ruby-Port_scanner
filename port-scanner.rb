@@ -70,7 +70,7 @@ if options[:ports]
   puts "Ports: #{options[:ports].join(', ')}"
 else
   puts "No ports specified"
-  options[:ports] = [21, 23, 53, 3306, 1433, 22, 80, 443, 3389, 8080, ] 
+  options[:ports] = [21, 23, 53, 3306, 1433, 22, 80, 443, 3389, 8080] 
 end
 
 target = options[:target]
