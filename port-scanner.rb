@@ -6,17 +6,17 @@ def port_scanner(target, ports)
   ports.each do |port|
     s = nil
     begin
-      Timeout::timeout(2) do
+      Timeout::timeout(3) do
         s = Socket.new(:INET, :STREAM)
         remote_addr = Socket.sockaddr_in(port, target)
         
         begin
           s.connect_nonblock(remote_addr)
         rescue IO::WaitWritable
-          IO.select(nil, [s], nil, 2)
+          IO.select(nil, [s], nil, 3)
           puts "Port #{port} on #{target} is open"
         rescue Errno::EINPROGRESS
-          IO.select(nil, [s], nil, 2)
+          IO.select(nil, [s], nil, 3)
           puts "Port #{port} on #{target} is open"
         rescue Errno::ECONNREFUSED
           puts "Port #{port} on #{target} is closed"
@@ -35,10 +35,10 @@ end
 options = {}
 OptionParser.new do |opts|
   opts.banner = <<-BANNER
-Usage: ruby portscanner.rb [options]
+Usage: 'ruby portscanner.rb [options]'
 version 1.0
-By: IcaroAss
-Github: github.com/icaroass
+By: IcaroSSU
+Github: github.com/icaroSSU
 
 This script is a tool for pentesting, specifically for scanning ports on a target.
 If you need help using the script, use -h.
