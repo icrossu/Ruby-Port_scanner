@@ -1,6 +1,6 @@
 # Explicação do código
 
-   ## 1. Bibliotecas 
+   ## 1. Bibliotecas  
 
 ### 1.1 Sockets
 
