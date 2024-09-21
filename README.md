@@ -43,3 +43,8 @@ Errno::ETIMEDOUT: The connection timed out. The port could not be reached within
  
 ### Socket Closure:
 The socket s is closed in the ensure block, ensuring that the resource is released even if an exception occurs.
+
+# Tradutions
+
+[texto do link]()
+
