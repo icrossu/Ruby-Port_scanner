@@ -48,3 +48,7 @@ The socket s is closed in the ensure block, ensuring that the resource is releas
 
 [Portuguese](https://github.com/icrossu/Ruby-Port_scanner/blob/main/tradutions/README(portuguese).md)
 
+# References
+
+[Ruby-Socket](https://ruby-doc.org/stdlib-3.1.0/libdoc/socket/rdoc/Socket.html
+)
