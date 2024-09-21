@@ -46,5 +46,5 @@ The socket s is closed in the ensure block, ensuring that the resource is releas
 
 # Tradutions
 
-[texto do link]()
+[Portuguese](https://github.com/icrossu/Ruby-Port_scanner/blob/main/tradutions/README(portuguese).md)
 
