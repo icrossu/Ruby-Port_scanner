@@ -47,6 +47,10 @@ Errno::ETIMEDOUT: O tempo de conexão expirou. A porta não pôde ser alcançada
   ### Fechamento do Socket:
 O socket s é fechado no bloco ensure, que garante que o recurso seja liberado mesmo se ocorrer uma exceção.
 
+# Referencias
+
+[Ruby-Socket](https://ruby-doc.org/stdlib-3.1.0/libdoc/socket/rdoc/Socket.html
+)
 
 
   
