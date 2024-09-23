@@ -2,36 +2,6 @@ require 'socket'
 require 'timeout'
 require 'optparse'
 
-def port_scanner(target, ports)
-  ports.each do |port|
-    s = nil
-    begin
-      Timeout::timeout(3) do
-        s = Socket.new(:INET, :STREAM)
-        remote_addr = Socket.sockaddr_in(port, target)
-        
-        begin
-          s.connect_nonblock(remote_addr)
-        rescue IO::WaitWritable
-          IO.select(nil, [s], nil, 3)
-          puts "Port #{port} on #{target} is open"
-        rescue Errno::EINPROGRESS
-          IO.select(nil, [s], nil, 3)
-          puts "Port #{port} on #{target} is open"
-        rescue Errno::ECONNREFUSED
-          puts "Port #{port} on #{target} is closed"
-        rescue Errno::ETIMEDOUT
-          puts "Port #{port} timed out to connect"
-        ensure
-          s.close if s
-        end
-      end
-    rescue Timeout::Error
-      puts "Port #{port} timed out to connect"
-    end
-  end
-end
-
 options = {}
 OptionParser.new do |opts|
   opts.banner = <<-BANNER
@@ -72,6 +42,36 @@ if options[:ports]
 else
   puts "No ports specified"
   options[:ports] = [21, 23, 53, 3306, 1433, 22, 80, 443, 3389, 8080] 
+end
+
+def port_scanner(target, ports)
+  ports.each do |port|
+    s = nil
+    begin
+      Timeout::timeout(3) do
+        s = Socket.new(:INET, :STREAM)
+        remote_addr = Socket.sockaddr_in(port, target)
+        
+        begin
+          s.connect_nonblock(remote_addr)
+        rescue IO::WaitWritable
+          IO.select(nil, [s], nil, 3)
+          puts "Port #{port} on #{target} is open"
+        rescue Errno::EINPROGRESS
+          IO.select(nil, [s], nil, 3)
+          puts "Port #{port} on #{target} is open"
+        rescue Errno::ECONNREFUSED
+          puts "Port #{port} on #{target} is closed"
+        rescue Errno::ETIMEDOUT
+          puts "Port #{port} timed out to connect"
+        ensure
+          s.close if s
+        end
+      end
+    rescue Timeout::Error
+      puts "Port #{port} timed out to connect"
+    end
+  end
 end
 
 target = options[:target]
